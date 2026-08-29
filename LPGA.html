@@ -222,7 +222,7 @@ function parseRS3(text){
     return players;
 }
 
-// PARSE OFFICIAL (FIXED)
+// PARSE OFFICIAL
 function parseOfficial(text){
     const lines=text.split(/\n/).filter(l=>l.trim());
     const players={};
@@ -410,7 +410,7 @@ async function deleteMapping(k){
     }
 }
 
-// COMPARE
+// COMPARE (Updated to match European Tour Total Score Comparison Logic exactly)
 function compare(){
     let OFF, RS3;
     try {
@@ -490,6 +490,7 @@ function compare(){
 
         const rs3Total = (R && R.totalScore !== undefined) ? R.totalScore : "-";
 
+        // Determine Status and TOTAL column styling based on Priority Rules (European Tour exact match)
         let status = "MATCH";
         let statusCls = "ok";
         let totalCls = "ok";
@@ -502,7 +503,7 @@ function compare(){
             status = "NEED TO UPDATE";
             statusCls = "upd";
             totalCls = "upd";
-        } else if(officialTotal !== rs3Total){
+        } else if(officialTotal != rs3Total){
             status = "TOTAL SCORE MISMATCH";
             statusCls = "totalError";
             totalCls = "totalError";
