@@ -155,7 +155,7 @@ function cellToHole(v){
     v=String(v).trim();
     if(!/^\d+$/.test(v)) return null;
     let n=Number(v);
-    return (n>=2 && n<=9)?n:null;
+    return (n>=1 && n<=9)?n:null; // Updated to accept hole scores of 1 through 9
 }
 
 /* ================= NAME NORMALIZATION ================= */
