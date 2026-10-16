@@ -164,12 +164,18 @@ function smartSplit(line){
 }
 
 // CLEAN NUMBER
+
 function cellToHole(v){
-    if(v==null) return null;
-    v=String(v).trim();
+    if(v == null) return null;
+
+    v = String(v).trim();
+
     if(!/^\d+$/.test(v)) return null;
-    let n=Number(v);
-    return (n>=2 && n<=9)?n:null;
+
+    const n = Number(v);
+
+    // Accept valid positive golf hole scores, including 1 and 10+
+    return (n >= 1 && n <= 20) ? n : null;
 }
 
 // FULL NAME NORMALIZATION
